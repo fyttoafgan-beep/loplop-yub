@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For yubyub 🐻🍓</title>
+
+<style>
+body{
+text-align:center;
+font-family:Arial;
+background:linear-gradient(#ff758c,#ff7eb3);
+color:white;
+overflow:hidden;
+}
+
+button{
+padding:12px 20px;
+font-size:18px;
+border:none;
+border-radius:20px;
+margin:10px;
+cursor:pointer;
+}
+
+.yes{
+background:white;
+color:#ff4d6d;
+}
+
+.no{
+background:#ff4d6d;
+color:white;
+position:absolute;
+}
+
+.photo{
+display:none;
+margin-top:20px;
+}
+
+.photo img{
+width:230px;
+border-radius:20px;
+}
+
+.heart{
+position:absolute;
+top:-10px;
+font-size:20px;
+animation:fall 4s linear;
+}
+
+@keyframes fall{
+to{transform:translateY(100vh);}
+}
+</style>
+
+</head>
+
+<body>
+
+<h2>Hai yubyub 🐻🍓 ❤️</h2>
+
+<p>
+makasii udah hadir di duniaku yubyub 😜💖
+</p>
+
+<h3>Mau jadi partner lope i? 💖</h3>
+
+<button class="yes"
+onclick="yesClick()">
+Mau dong 💖
+</button>
+
+<button class="no"
+id="noBtn"
+onclick="noMove()">
+
+Gamau 😝
+
+</button>
+
+<p id="text"></p>
+
+<div class="photo"
+id="fotoBox">
+<img src="foto.jpg">
+</div>
+
+<audio id="mau"
+src="mau.mp3"></audio>
+
+<audio id="g1"
+src="gamau.mp3"></audio>
+
+<audio id="g2"
+src="gamau2.mp3"></audio>
+
+<script>
+
+let count=0;
+
+/* KLIK MAU */
+
+function yesClick(){
+
+let s=document.getElementById("mau");
+
+s.currentTime=0;
+s.play();
+
+document.getElementById("text").innerHTML=
+"YEAY 😆💖 sekarang yubyub partner lope i ❤️";
+
+document.getElementById("fotoBox").style.display="block";
+
+}
+
+/* KLIK GAMAU */
+
+function noMove(){
+
+count++;
+
+if(navigator.vibrate){
+navigator.vibrate(200);
+}
+
+let s1=document.getElementById("g1");
+let s2=document.getElementById("g2");
+
+/* GANJIL GENAP */
+
+if(count%2==1){
+
+s2.pause();
+s1.currentTime=0;
+s1.play();
+
+}else{
+
+s1.pause();
+s2.currentTime=0;
+s2.play();
+
+}
+
+/* tombol kabur */
+
+let b=document.getElementById("noBtn");
+
+b.style.left=
+Math.random()*70+"vw";
+
+b.style.top=
+Math.random()*70+"vh";
+
+}
+
+/* hati jatuh */
+
+setInterval(()=>{
+
+let h=document.createElement("div");
+
+h.innerHTML="❤️";
+
+h.className="heart";
+
+h.style.left=
+Math.random()*100+"vw";
+
+document.body.appendChild(h);
+
+setTimeout(()=>h.remove(),4000);
+
+},500);
+
+</script>
+
+</body>
+</html>
